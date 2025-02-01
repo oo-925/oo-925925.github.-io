@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>我们的专属小天地</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f0f8ff;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4682b4;
+            color: #fff;
+            padding: 20px 0;
+        }
+        nav a {
+            margin: 0 15px;
+            color: #fff;
+            text-decoration: none;
+        }
+        section {
+            margin: 20px;
+        }
+        footer {
+            background-color: #4682b4;
+            color: #fff;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>欢迎我最最最喜欢的小o宝宝！</h1>
+        <nav>
+            <a href="#home">首页</a>
+            <a href="#interaction">互动</a>
+            <a href="#messages">留言</a>
+            <a href="#memories">回忆录</a>
+        </nav>
+    </header>
+    <section id="home">
+        <h2>我们的恋爱计时</h2>
+        <p id="loveDays">我们已经相爱了 <span id="days">0</span> 天。</p>
+    </section>
+    <section id="interaction">
+        <h2>互动专区</h2>
+        <p>输入关键词，我会给你特别的回应哦！</p>
+        <input type="text" id="keyword" placeholder="比如：星辰，抱抱">
+        <button onclick="respond()">发送</button>
+        <p id="response"></p>
+    </section>
+    <section id="messages">
+        <h2>留言板</h2>
+        <textarea id="message" placeholder="写下你想对我说的话"></textarea>
+        <button onclick="leaveMessage()">留言</button>
+        <div id="messageBoard"></div>
+    </section>
+    <section id="memories">
+        <h2>我们的回忆录</h2>
+        <p>这里记录了我们特别的记忆。</p>
+        <ul id="memoryList">
+            <li>2025年2月1日：我们第一次在这里相遇。</li>
+            <!-- 你可以在这里添加更多的回忆 -->
+        </ul>
+    </section>
+    <footer>
+        <p>永远爱你的小星辰</p>
+    </footer>
+    <script>
+        // 恋爱计时
+        const startDate = new Date('2021-12-21');  // 修改为 2021-12-21
+        const today = new Date();
+        const timeDiff = today - startDate;
+        const daysDiff = Math.floor(timeDiff / (1000 * 60 * 60 * 24));
+        document.getElementById('days').textContent = daysDiff;
+
+        // 互动回应
+        function respond() {
+            const keyword = document.getElementById('keyword').value;
+            const response = document.getElementById('response');
+            if (keyword.includes('抱抱')) {
+                response.textContent = '抱抱我的小o宝宝！';
+            } else {
+                response.textContent = '我爱你，小o宝宝！';
+            }
+        }
+
+        // 留言板
+        function leaveMessage() {
+            const message = document.getElementById('message').value;
+            const messageBoard = document.getElementById('messageBoard');
+            const newMessage = document.createElement('p');
+            newMessage.textContent = message;
+            messageBoard.appendChild(newMessage);
+            document.getElementById('message').value = '';
+        }
+    </script>
+</body>
+</html>
